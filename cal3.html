@@ -83,29 +83,25 @@
 
 
 
-            <p>Guest Charge</p>
-
-
-
-            <input type="text" id="amount" placeholder="Amount to be refunded">
-
-
-
-
             <p>Area</p>
 
 
 
             <select id="services">
                 <option selected disabled hidden>Select</option>
-                <option value="0.135">13.5% - Tampa</option>
-                <option value="0.125">12.5% - Monroe</option>
-                <option value="0.13">13% - PCB</option>
-                <option value="0.12">12% - Unincorporated PCB</option>
-                <option value="0.12">12% - Destin</option>
-                <option value="0.12">12% - Daytona</option>
+                <option value="01.135">Tampa</option>
+                <option value="01.125">Monroe</option>
+                <option value="01.13">PCB</option>
+                <option value="01.12">Unincorporated PCB</option>
+                <option value="01.12">Destin</option>
+                <option value="01.12">Daytona</option>
             </select>
 
+            <p>Guest Charge</p>
+
+
+
+            <input type="text" id="amount" placeholder="Amount to be refunded">
 
 
 
@@ -147,10 +143,9 @@
         
          
         
-            /*calculating the tip by multiplying total-bill and type of service;
-             then dividing it by number of persons.*/
+            /*calculating the tip by dividing total-bill and type of service.*/
             //fixing the total amount upto 2 digits of decimal
-            let total = (amount * service) ;
+            let total = amount / service ;
             total = total.toFixed(2);
         
             //finally displaying the tip value 
@@ -158,6 +153,9 @@
             document.querySelector('#total').innerHTML = total;
         }
     </script>
+</body>
+
+</html>
 </body>
 
 </html>
