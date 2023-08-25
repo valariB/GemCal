@@ -3,17 +3,16 @@
 <head>
     <style>
         body {
-            background-color: #001f4f;
-            font-family: 'Raleway', sans-serif;
+          font-family: 'Raleway', sans-serif;
         }
         
         .container {
             width: 350px;
-            height: 500px;
-            background-color: #fff;
+            height: 400px;
+            background-color: #f5f5f5;
             position: absolute;
-            left: 50%;
-            top: 50%;
+            left: 40%;
+            top: 40%;
             transform: translateX(-50%) translateY(-50%);
             border-radius: 20px;
         }
@@ -21,12 +20,12 @@
         h1 {
             position: absolute;
             left: 50%;
-            top: -60px;
+            top: -53px;
             width: 300px;
             transform: translateX(-50%);
-            background-color: #FF851B;
+            background-color: #292929;
             color: #fff;
-            font-weight: 100;
+            font-weight: 200;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
             font-size: 18px;
@@ -42,13 +41,13 @@
         select {
             width: 80%;
             border: none;
-            border-bottom: 1px solid #0074D9;
+            border-bottom: 1px solid #C70039;
             padding: 10px;
         }
         
         input:focus,
         select:focus {
-            border: 1px solid #0074D9;
+            border: 1px solid #C70039;
             outline: none;
         }
         
@@ -62,13 +61,14 @@
             height: 50px;
             background-color: #39CCCC;
             color: #fff;
-            font-size: 16px;
+            font-size: 17px;
             border: none;
             border-radius: 5px;
         }
         
         .tip {
             text-align: center;
+            color: #C70039;
             font-size: 18px;
             display: none;
         }
@@ -138,10 +138,7 @@
             let amount = document.querySelector('#amount').value;
             let service = document.querySelector('#services').value;
         
-            console.log(service);
-            /*if statement will work when user 
-               presses calculate without entering values. */
-            //so will display an alert box and return.
+           
             if (amount === '' && service === 'Select') {
                 alert("Please enter valid values");
                 return;
