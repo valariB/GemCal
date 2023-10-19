@@ -1,20 +1,21 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <style>
         body {
-          font-family: 'Raleway', sans-serif;
-          background-color: transparent;
+            font-family: 'Raleway', sans-serif;
+            background-color: transparent;
         }
         
         .container {
             width: 300px;
             height: 400px;
-            background-color: #f5f5f5;
+            background-color: #E8E3DF;
             position: absolute;
-            left: 40%;
-            top: 40%;
-            transform: translateX(-40%) translateY(-40%);
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
             border-radius: 10px;
         }
         
@@ -24,7 +25,7 @@
             top: -53px;
             width: 250px;
             transform: translateX(-50%);
-            background-color: #900C3F;
+            background-color: #121212;
             color: #fff;
             font-weight: 200;
             border-top-left-radius: 20px;
@@ -40,10 +41,10 @@
         
         input,
         select {
-            width: 70%;
+            width: 100%;
             border: none;
-            border-bottom: 1px solid #FFD966;
-            padding: 10px;
+            border-bottom: 1px solid #0000;
+            padding: 5px;
         }
         
         input:focus,
@@ -52,26 +53,25 @@
             outline: none;
         }
         
-        select {
-            width: 78% !important;
-        }
-        
         button {
-            margin: 20px auto;
-            width: 100px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 15px auto;
+            width: 100%;
             height: 40px;
-            background-color: #39CCCC;
-            color: #fff;
+            background-color: #E7E99B;
+            border-radius: 5px;
             font-size: 17px;
             border: none;
-            border-radius: 5px;
+            color: #121212;
         }
         
         .tip {
             text-align: center;
-            color: #900C3F;
+            color: #121212;
             font-size: 19px;
             display: none;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -80,76 +80,54 @@
     <div class="container">
         <h1>GEM CALCULATOR</h1>
         <div class="wrapper">
-
-
-
             <p>Area</p>
-
-
-
             <select id="areas">
                 <option selected disabled hidden>Select</option>
-                <option value="01.135">TPA-Hillsborough</option>
-                <option value="01.130">TPA-Pinellas</option>
-                <option value="01.125">Monroe</option>
-                <option value="01.130">PCB</option>
-                <option value="01.120">Unincorporated PCB</option>
-                <option value="01.120">Destin</option>
-                <option value="01.125">Daytona</option>
+                <option value="1.135">TPA-Hillsborough</option>
+                <option value="1.130">TPA-Pinellas</option>
+                <option value="1.125">Monroe</option>
+                <option value="1.130">PCB</option>
+                <option value="1.120">Unincorporated PCB</option>
+                <option value="1.120">Destin</option>
+                <option value="1.125">Daytona</option>
             </select>
 
             <p>Guest Refund</p>
-
-
-
             <input type="text" id="amount" placeholder="Amount to be refunded">
-
-
-
             <button id="calculate">Calculate</button>
         </div>
 
         <div class="tip">
-
-
-
-            <p>Accomadation Fare Adjustment</p>
-
-
-
+            <p>Accommodation Fare Adjustment</p>
             <span id="total">0</span>
         </div>
     </div>
+
     <script>
-        //the function called when Calculate button is clicked.
-        window.onload = () => 
-            {
-                /*calling a function calculateTip which
-                 will calculate the tip for the bill.*/
-                document.querySelector('#calculate').onclick = 
-                calculateTip;
-            }
+        // The function called when Calculate button is clicked.
+        window.onload = () => {
+            // Calling a function calculateTip when the page loads.
+            calculateTip();
+            // Adding a click event listener to the Calculate button.
+            document.querySelector('#calculate').onclick = calculateTip;
+        }
         
         function calculateTip() {
-            /*assign values of ID : amount, person and 
-            service to variables for further calculations.*/
-            let amount = document.querySelector('#amount').value;
-            let area = document.querySelector('#areas').value;
+            // Assign values of ID: amount and areas to variables for further calculations.
+            let amount = parseFloat(document.querySelector('#amount').value);
+            let area = parseFloat(document.querySelector('#areas').value);
         
-           
-            if (amount === '' && area === 'Select') {
+            if (isNaN(amount) || isNaN(area)) {
                 alert("Please enter valid values");
                 return;
             }
         
-         
-        
-            /*calculating the tip by dividing total-bill and type of area.*/
-            //fixing the total amount upto 2 digits of decimal
-            let total = amount / area ;
+            // Calculating the tip by dividing the amount by the area.
+            // Fixing the total amount up to 2 decimal places.
+            let total = amount / area;
             total = total.toFixed(2);
         
-            //finally displaying the tip value 
+            // Finally, displaying the tip value.
             document.querySelector('.tip').style.display = 'block';
             document.querySelector('#total').innerHTML = total;
         }
